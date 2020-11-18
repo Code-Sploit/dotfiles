@@ -1,0 +1,13 @@
+#!/bin/bash
+# PS1 FUNCTION
+
+use_prompt1 () {
+	#export PS1="\033[0;31m[\033[0;32m\033[0;32m\u@\033[1;35m\h \033[0;31m\w ]\033[0m$ "
+	export PS1="\033[0;31m[\e[93m\u@\e[92m\h \033[0;31m\w ]\033[0m$ "
+}
+
+# PS2 FUNCTION
+
+use_prompt2 () {
+	export PS1="\033[0;31m[\033[0;34m\u@\033[1;35m\h \033[0;31m\w ]\033[0m$ "
+}
