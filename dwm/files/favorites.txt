@@ -1,0 +1,6 @@
+firefox
+virtualbox
+st
+qtcreator
+code
+nitrogen
