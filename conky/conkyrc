@@ -1,0 +1,92 @@
+--[[
+Conky, a system monitor, based on torsmo
+
+Any original torsmo code is licensed under the BSD license
+
+All code written since the fork of torsmo is licensed under the GPL
+
+Please see COPYING for details
+
+Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+Copyright (c) 2005-2019 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+All rights reserved.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+]]
+
+conky.config = {
+    alignment = 'bottom_right',
+    background = false,
+    border_width = 0,
+    cpu_avg_samples = 2,
+    default_color = 'white',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    extra_newline = false,
+    font = 'Hack:size=10',
+    gap_x = 15,
+    gap_y = 580,
+    minimum_height = 5,
+    minimum_width = 5,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_ncurses = false,
+    out_to_stderr = false,
+    out_to_x = true,
+    own_window = true,
+    own_window_class = 'override',
+    own_window_type = 'override',
+    own_window_transparent = true,
+    show_graph_range = false,
+    show_graph_scale = false,
+    stippled_borders = 0,
+    update_interval = 1.0,
+    uppercase = false,
+    use_spacer = 'none',
+    use_xft = true,
+}
+
+conky.text = [[
+${color #ff0000}CPU1: ${color}${cpu cpu0}%
+${color}${cpubar cpu0 3}
+${color #ff0000}CPU2: ${color}${cpu cpu1}%
+${color}${cpubar cpu1 3}
+${color #ff0000}CPU3: ${color}${cpu cpu2}%
+${color}${cpubar cpu2 3}
+${color #ff0000}CPU4: ${color}${cpu cpu3}%
+${color}${cpubar cpu3 3}
+$hr
+${color}/           ${fs_bar 3,80 /}  ${fs_used /}                                         ${color ff0000}Processes:                   PID      MEM     CPU
+${color}/tmp        ${fs_bar 3,80 /tmp}  ${fs_used /tmp}                          ${alignr}${top_mem name 1} ${alignr}  ${top_mem pid 1} ${alignr} ${top_mem mem 1}% ${top cpu 1}%
+${color}/home       ${fs_bar 3,80 /home}  ${fs_used /home}                        ${alignr}${top_mem name 2} ${alignr}  ${top_mem pid 2} ${alignr} ${top_mem mem 2}% ${top cpu 2}%
+${color}/var        ${fs_bar 3,80 /var}  ${fs_used /var}                          ${alignr}${top_mem name 3} ${alignr}  ${top_mem pid 3} ${alignr} ${top_mem mem 3}% ${top cpu 3}%
+${color}/data       ${fs_bar 3,80 /data}  ${fs_used /data}                        ${alignr}${top_mem name 4} ${alignr}  ${top_mem pid 4} ${alignr} ${top_mem mem 4}% ${top cpu 4}%
+                                                                                  ${alignr}${top_mem name 5} ${alignr}  ${top_mem pid 5} ${alignr} ${top_mem mem 5}% ${top cpu 5}%
+                                                                                  ${alignr}${top_mem name 6} ${alignr}  ${top_mem pid 6} ${alignr} ${top_mem mem 6}% ${top cpu 6}%
+                                                                                  ${alignr}${top_mem name 7} ${alignr}  ${top_mem pid 7} ${alignr} ${top_mem mem 7}% ${top cpu 7}%
+                                                                                  ${alignr}${top_mem name 8} ${alignr}  ${top_mem pid 8} ${alignr} ${top_mem mem 8}% ${top cpu 8}%
+                                                                                  ${alignr}${top_mem name 9} ${alignr}  ${top_mem pid 9} ${alignr} ${top_mem mem 9}% ${top cpu 9}%
+$hr
+${color ff0000}Memory: ${color}$mem/$memmax
+${color}${membar 3}${color}
+$hr
+${color ff0000}Network${color}
+  Up:       ${upspeed wlp3s0}    ${totalup wlp3s0}   total
+  Down:     ${downspeed wlp3s0}    ${totaldown wlp3s0}   total
+]]
