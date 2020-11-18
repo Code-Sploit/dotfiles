@@ -1,0 +1,164 @@
+[colors]
+;background = ${xrdb:color0:#222}
+background = #222
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/bottom]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 30
+offset-x = 0%
+offset-y = 0
+radius = 0
+fixed-center = false
+bottom = true
+
+wm-restack = bspwm
+
+;background = ${colors.background}
+background = #000000
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #0000000
+
+border-size = 2
+border-color = ${colors.background-alt}
+;border-color = #0000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = hack regular:style=Regular:size=9;0
+font-1 = hack regular:size=9:style=Medium;0
+font-2 = siji:style=Regular:size=9
+font-3 = hack regular:size=9;1
+
+modules-left = powermenu lockscreen
+;modules-center = filesystem
+modules-right = filesystem isrunning-compton updates-apt launch-pavucontrol
+
+tray-position = right
+tray-padding = 1
+tray-max-icons = 6
+tray-transparent = false
+tray-background = ${colors.background}
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = 💽 %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%% Used
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/filesystem]
+type2 = internal/fs
+interval2 = 25
+
+mount-1 = /var
+
+label-mounted2 = 💽 %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%% Used
+label-unmounted2 = %mountpoint% not mounted
+label-unmounted2-foreground = ${colors.foreground-alt}
+
+[module/filesystem]
+type3 = internal/fs
+interval3 = 25
+
+mount-2 = /usr
+
+label-mounted3 = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%% Used
+label-unmounted3 = %mountpoint% not mounted
+label-unmounted3-foreground = ${colors.foreground-alt}
+
+[module/filesystem]
+type4 = internal/fs
+interval4 = 25
+
+mount-3 = /home
+
+label-mounted4 = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%% Used
+label-unmounted4 = %mountpoint% not mounted
+label-unmounted4-foreground = ${colors.foreground-alt}
+
+[module/filesystem]
+type5 = internal/fs
+interval5 = 25
+
+mount-4 = /tmp
+
+label-mounted5 = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%% Used
+label-unmounted5 = %mountpoint% not mounted
+label-unmounted5-foreground = ${colors.foreground-alt}
+
+[module/isrunning-compton]
+type = custom/script
+exec = ~/.config/polybar/scripts/isrunning-compton.sh
+interval = 1
+click-left = ~/.config/polybar/scripts/isrunning-compton.sh --toggle &
+format-underline = #0000ff
+
+[module/updates-apt]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates-apt.sh
+interval = 600
+format-underline = #0000ff
+
+[module/launch-pavucontrol]
+type = custom/script
+exec = ~/.config/polybar/scripts/launch-pavucontrol.sh
+interval = 1
+click-left = ~/.config/polybar/scripts/launch-pavucontrol.sh --toggle &
+format-underline = #0000ff
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[module/lockscreen]
+type = custom/script
+exec = ~/.config/polybar/scripts/lockscreen.sh
+click-left = ~/.config/polybar/scripts/lockscreen.sh --lock &
+interval = 1
+format-underline = #0000ff
+label = Lock Screen

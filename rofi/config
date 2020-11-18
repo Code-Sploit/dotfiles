@@ -1,0 +1,4 @@
+rofi.theme: arthur
+rofi.modi: window,run,ssh,drun,keys,windowcd,combi
+rofi.opacity: 70
+rofi.fullscreen: true
